@@ -1,27 +1,24 @@
 {
-  "authors": [
-    "John Longwalker"
-  ],
-  "build-depends": [
-  ],
-  "depends": [
-    "GTK::Simple"
-  ],
-  "description": "blah blah blah",
-  "license": "Artistic-2.0",
-  "name": "Tarot::Party",
-  "provides": {
-    "Tarot::Card": "lib/Tarot/Card.rakumod",
-    "Tarot::Deck": "lib/Tarot/Deck.rakumod",
-    "Tarot::Deck::RWS": "lib/Tarot/Deck/RWS.rakumod",
-    "Tarot::Party": "lib/Tarot/Party.rakumod"
-  },
-  "resources": [
-  ],
-  "source-url": "",
-  "tags": [
-  ],
-  "test-depends": [
-  ],
-  "version": "0.0.1"
+    "name": "Tarot::Party",
+    "description": "blah blah blah",
+    "version": "0.0.1",
+    "authors": [
+        "John Longwalker"
+    ],
+    "depends": [
+        "GTK::Simple"
+    ],
+    "build-depends": [],
+    "provides": {
+        "Tarot::Card": "lib/Tarot/Card.rakumod",
+        "Tarot::Deck": "lib/Tarot/Deck.rakumod",
+        "Tarot::Deck::RWS": "lib/Tarot/Deck/RWS.rakumod",
+        "Tarot::Deck::Misc": "lib/Tarot/Deck/Misc.rakumod",
+        "Tarot::Party": "lib/Tarot/Party.rakumod",
+        "Tarot::Reading": "lib/Tarot/Reading.rakumod",
+        "Tarot::Spread": "lib/Tarot/Spread.rakumod",
+        "Tarot::Spread::Simple": "lib/Tarot/Spread/Simple.rakumod"
+    },
+    "license": "Artistic-2.0",
+    "source-url": ""
 }

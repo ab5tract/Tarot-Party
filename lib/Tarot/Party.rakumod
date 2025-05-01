@@ -2,6 +2,8 @@
 use v6.e.PREVIEW;
 
 use GTK::Simple::App;
+use GTK::Simple::VBox;
+use GTK::Simple::HBox;
 use Tarot::Deck::RWS;
 #use Tarot::Card;
 
@@ -11,6 +13,9 @@ unit class Tarot::Party;
 has $.deck = Tarot::Deck::RWS.new;
 
 submethod TWEAK() {
-    dd $!deck.deck;
-    self.set-content($!deck.draw-card);
+    self.set-content:
+        my $hbox = GTK::Simple::HBox.new:
+            GTK::Simple::VBox.new($!deck.draw-card),
+            GTK::Simple::VBox.new($!deck.draw-card),
+            GTK::Simple::VBox.new($!deck.draw-card);
 }

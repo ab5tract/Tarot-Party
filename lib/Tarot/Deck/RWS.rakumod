@@ -61,7 +61,7 @@ method !generate-lookup() {
                 take "minor_arcana_cups_{@.minor[$c - 50].lc}.jpeg" => "{@.minor[$c - 50]} of Cups";
             }
             when * - 64 < 14 {
-                take "minor_arcana_pentacles_{@.minor[$c - 64].lc}.jpeg" => "{@.minor[$c - 64]} of Pentacless";
+                take "minor_arcana_pentacles_{@.minor[$c - 64].lc}.jpeg" => "{@.minor[$c - 64]} of Pentacles";
             }
         }
     }
