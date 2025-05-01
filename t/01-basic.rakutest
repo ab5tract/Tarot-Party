@@ -1,0 +1,6 @@
+use Test;
+use Tarot::Party;
+
+pass "replace me";
+
+done-testing;

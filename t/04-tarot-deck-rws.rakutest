@@ -1,0 +1,15 @@
+
+use v6;
+use Test;
+
+use Tarot::Deck::RWS;
+
+my $rws;
+
+lives-ok {
+    $rws = Tarot::Deck::RWS.new;
+}, "Survives instantiation";
+
+$rws.file-to-card;
+
+done-testing;

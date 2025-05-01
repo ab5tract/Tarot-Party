@@ -1,0 +1,17 @@
+{
+    "name": "Tarot::Party",
+    "description": "blah blah blah",
+    "version": "0.0.1",
+    "authors": [
+        "John Longwalker"
+    ],
+    "depends": [
+        "GTK::Simple"
+    ],
+    "build-depends": [],
+    "provides": {
+        "Tarot::Party": "lib/Tarot/Party.rakumod"
+    },
+    "license": "Artistic-2.0",
+    "source-url": ""
+}
