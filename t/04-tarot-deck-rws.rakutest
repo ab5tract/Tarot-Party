@@ -2,14 +2,22 @@
 use v6;
 use Test;
 
+use Tarot::Deck::Misc;
 use Tarot::Deck::RWS;
 
 my $rws;
 
 lives-ok {
-    $rws = Tarot::Deck::RWS.new;
+    $rws = Tarot::Deck::RWS.new(:strategy(Static));
 }, "Survives instantiation";
 
-$rws.file-to-card;
+my $card;
+lives-ok {
+    $card = $rws.draw-card(:test);
+}, "Survives drawing a card";
+
+ok $card.value eq 'The Fool', "The expected card was drawn (The Fool)";
+ok $rws.draw-card(:test, :index(21)).value eq 'The World', "The expected card was drawn (The World)";
+ok $rws.deck.grep(Nil) == 0, "There are no Nil values in the deck";
 
 done-testing;

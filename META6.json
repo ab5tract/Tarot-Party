@@ -1,17 +1,27 @@
 {
-    "name": "Tarot::Party",
-    "description": "blah blah blah",
-    "version": "0.0.1",
-    "authors": [
-        "John Longwalker"
-    ],
-    "depends": [
-        "GTK::Simple"
-    ],
-    "build-depends": [],
-    "provides": {
-        "Tarot::Party": "lib/Tarot/Party.rakumod"
-    },
-    "license": "Artistic-2.0",
-    "source-url": ""
+  "authors": [
+    "John Longwalker"
+  ],
+  "build-depends": [
+  ],
+  "depends": [
+    "GTK::Simple"
+  ],
+  "description": "blah blah blah",
+  "license": "Artistic-2.0",
+  "name": "Tarot::Party",
+  "provides": {
+    "Tarot::Card": "lib/Tarot/Card.rakumod",
+    "Tarot::Deck": "lib/Tarot/Deck.rakumod",
+    "Tarot::Deck::RWS": "lib/Tarot/Deck/RWS.rakumod",
+    "Tarot::Party": "lib/Tarot/Party.rakumod"
+  },
+  "resources": [
+  ],
+  "source-url": "",
+  "tags": [
+  ],
+  "test-depends": [
+  ],
+  "version": "0.0.1"
 }

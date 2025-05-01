@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Raku.Language.Version" version="D" explicit-for-new="true" />
+  <component name="Raku.Project.Details">
+    <option name="doesProjectContainRakuCode" value="true" />
+  </component>
+  <component name="Raku.SDK">
+    <option name="projectSdkPath" value="$USER_HOME$/.rakubrew/versions/moar-2025.04/bin" />
+    <option name="projectSdkVersion" value="v2025.04" />
+    <option name="projectZefPath" value="$USER_HOME$/.rakubrew/versions/moar-2025.04/share/perl6/site/bin/zef" />
+  </component>
+</project>
