@@ -7,6 +7,7 @@ unit class Tarot::Card;
     also does GTK::Simple::Widget;
 
 has Str $.name is built;
+has Bool $.flipped = False;
 
 has GTK::Simple::Image $!image is built;
 has GTK::Simple::VBox $!box is built;
@@ -19,9 +20,17 @@ submethod TWEAK(:$resource-path, :$name) {
     die "TRAGIC ERROR! No card found at '$path'" if not $path.IO.e;
 
     $!image = GTK::Simple::Image.new: :$path;
+    $!image.hide;
+
     $!box = GTK::Simple::VBox.new($!image);
     $!box.border-width = 16;
 }
 
+method flip-card {
+    if not $!flipped {
+        $!flipped = True;
+        $!image.show;
+    }
+}
 
 

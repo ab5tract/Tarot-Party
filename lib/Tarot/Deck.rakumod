@@ -28,6 +28,14 @@ multi method draw-card(--> Tarot::Card) {
     Tarot::Card.new: :$name, :$resource-path;
 }
 
+method draw-cards(Int $count where 0 <= *) {
+    @!deck or self.reshuffle;
+
+    my @cards;
+    @cards.push(self.draw-card) xx 3;
+    @cards
+}
+
 method reshuffle() {
     @!deck = self!generate-lookup;
     @!deck .= pick(*) unless $!strategy ~~ Static

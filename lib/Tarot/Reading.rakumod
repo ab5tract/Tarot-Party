@@ -2,7 +2,7 @@ use v6.d;
 
 
 use GTK::Simple::HBox;
-use GTK::Simple::Button;
+
 
 use Tarot::Deck;
 use Tarot::Card;
@@ -22,8 +22,10 @@ method new(*%args) { self.bless: |%args }
 submethod TWEAK(:$deck, :$spread) {
     ($!deck, $!spread) = $deck, $spread;
 
-    @!cards = | do for $!spread.order { [ |$deck.draw-card() xx $^cards-in-row ] }
-    $!box.set-content: |@!cards;
+    @!cards := $!spread.order.map({ $!deck.draw-cards($_) }).head;
+    dd :@!cards;
+
+    $!box.pack-start($_) for @!cards;
     $!box.border-width = 32;
 }
 
