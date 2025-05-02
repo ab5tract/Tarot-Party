@@ -52,16 +52,28 @@ method !generate-lookup() {
                 take "major_arcana_$card.jpeg" => @.major[$c];
             }
             when * - 22 < 14 {
-                take "minor_arcana_swords_{@.minor[$c - 22].lc}.jpeg" => "{@.minor[$c - 22]} of Swords";
+                my $idx = $c - 22;
+                my $path = "minor_arcana_swords_{@.minor[$idx].lc}.jpeg";
+                my $name = "{@.minor[$idx]} of Swords";
+                take $path => [$name, $c + 1];
             }
             when * - 36 < 14 {
-                take "minor_arcana_wands_{@.minor[$c - 36].lc}.jpeg" => "{@.minor[$c -36]} of Wands";
+                my $idx = $c - 36;
+                my $path = "minor_arcana_wands_{@.minor[$idx].lc}.jpeg";
+                my $name = "{@.minor[$idx]} of Wands";
+                take $path => [$name, $c + 1];
             }
             when * - 50 < 14 {
-                take "minor_arcana_cups_{@.minor[$c - 50].lc}.jpeg" => "{@.minor[$c - 50]} of Cups";
+                my $idx = $c - 50;
+                my $path = "minor_arcana_cups_{@.minor[$idx].lc}.jpeg";
+                my $name = "{@.minor[$idx]} of Cups";
+                take $path => [$name, $c + 1];
             }
             when * - 64 < 14 {
-                take "minor_arcana_pentacles_{@.minor[$c - 64].lc}.jpeg" => "{@.minor[$c - 64]} of Pentacles";
+                my $idx = $c - 64;
+                my $path = "minor_arcana_pentacles_{@.minor[$idx].lc}.jpeg";
+                my $name = "{@.minor[$idx]} of Pentacles";
+                take $path => [$name, $c + 1];
             }
         }
     }

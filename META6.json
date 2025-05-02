@@ -17,7 +17,13 @@
         "Tarot::Party": "lib/Tarot/Party.rakumod",
         "Tarot::Reading": "lib/Tarot/Reading.rakumod",
         "Tarot::Spread": "lib/Tarot/Spread.rakumod",
-        "Tarot::Spread::Simple": "lib/Tarot/Spread/Simple.rakumod"
+        "Tarot::Spread::Simple": "lib/Tarot/Spread/Simple.rakumod",
+        "Tarot::Party::Panel": "lib/Tarot/Party/Panel.rakumod",
+        "Tarot::Party::Panel::CardDetails": "lib/Tarot/Party/Panel/CardDetails.rakumod",
+        "Tarot::Interpretation::Card": "lib/Tarot/Interpretation/Card.rakumod",
+        "Text::Interpretation::Spread": "lib/Text/Interpretation/Spread.rakumod",
+        "Tarot::Interpretation::Spread": "lib/Tarot/Interpretation/Spread.rakumod",
+        "Tarot::Interpretation": "lib/Tarot/Interpretation.rakumod"
     },
     "license": "Artistic-2.0",
     "source-url": ""

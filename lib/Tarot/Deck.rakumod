@@ -24,8 +24,8 @@ multi method draw-card(:$test!, :$index = 0 --> Pair) {
 multi method draw-card(--> Tarot::Card) {
     @!deck or self.reshuffle;
 
-    my ($resource-path, $name) = @!deck.shift.kv;
-    Tarot::Card.new: :$name, :$resource-path;
+    my :($resource-path, [$name, $id]) := @!deck.shift.kv;
+    Tarot::Card.new: :$id, :$name, :$resource-path;
 }
 
 method draw-cards(Int $count where 0 <= *) {

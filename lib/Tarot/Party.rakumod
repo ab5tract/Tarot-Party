@@ -7,6 +7,8 @@ use GTK::Simple::HBox;
 use GTK::Simple::Button;
 use GTK::Simple::Window;
 
+use DB::SQLite;
+
 use Tarot::Deck::RWS;
 use Tarot::Reading;
 use Tarot::Spread::Simple;
