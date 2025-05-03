@@ -1,8 +1,6 @@
 use v6.d;
 
-
 use GTK::Simple::HBox;
-
 
 use Tarot::Deck;
 use Tarot::Card;
@@ -23,9 +21,8 @@ submethod TWEAK(:$deck, :$spread) {
     ($!deck, $!spread) = $deck, $spread;
 
     @!cards := $!spread.order.map({ $!deck.draw-cards($_) }).head;
-    dd :@!cards;
 
-    $!box.pack-start($_) for @!cards;
+    @!cards.map: {$!box.pack-start($^card) };
     $!box.border-width = 32;
 }
 

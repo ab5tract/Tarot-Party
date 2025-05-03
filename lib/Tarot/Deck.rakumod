@@ -2,19 +2,21 @@ use v6.d;
 
 use Tarot::Card;
 use Tarot::Deck::Misc;
+use Tarot::Party::DB;
 
 unit role Tarot::Deck;
 
-has $.name is required;
+has $.name is built;
+has $.deck-id is built;
 has DrawStrategy $.strategy is rw = RollOnce;
-
-has @.major is required;
-has @.minor is required;
-has %.suites is required;
 
 has @.deck;
 
-method !generate-lookup { !!! }
+submethod TWEAK (:$name){
+    $!deck-id = db-get-deck-id($!name)
+        // fail "Could not find deck '$!name'";
+    @!deck = self.reshuffle;
+}
 
 multi method draw-card(:$test!, :$index = 0 --> Pair) {
     @!deck or self.reshuffle;
@@ -24,7 +26,7 @@ multi method draw-card(:$test!, :$index = 0 --> Pair) {
 multi method draw-card(--> Tarot::Card) {
     @!deck or self.reshuffle;
 
-    my :($resource-path, [$name, $id]) := @!deck.shift.kv;
+    my ($id, $name, $resource-path) = @!deck.shift<rowid name resource_path>;
     Tarot::Card.new: :$id, :$name, :$resource-path;
 }
 
@@ -39,4 +41,9 @@ method draw-cards(Int $count where 0 <= *) {
 method reshuffle() {
     @!deck = self!generate-lookup;
     @!deck .= pick(*) unless $!strategy ~~ Static
+}
+
+method !generate-lookup {
+    dd :$!deck-id;
+    |db-get-deck($!deck-id)
 }

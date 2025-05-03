@@ -17,7 +17,7 @@ unit class Tarot::Party;
     also is GTK::Simple::App;
 
 has $.deck = Tarot::Deck::RWS.new;
-has $.button = GTK::Simple::Button.new(:label("POOD!"));
+has $.button = GTK::Simple::Button.new(:label("Nice"));
 
 submethod TWEAK {
     my $reading = Tarot::Reading.new:

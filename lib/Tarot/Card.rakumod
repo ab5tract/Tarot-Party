@@ -3,6 +3,8 @@ use v6.d;
 use GTK::Simple::Image;
 use GTK::Simple::VBox;
 
+use Tarot::Party::DB;
+
 unit class Tarot::Card;
     also does GTK::Simple::Widget;
 
@@ -14,7 +16,7 @@ has GTK::Simple::Image $!image is built;
 has GTK::Simple::VBox $!box is built;
 multi method WIDGET() { return $!box.WIDGET; }
 
-submethod TWEAK(:$resource-path, :$name, :$id) {
+submethod TWEAK(:$resource-path!, :$name, :$id) {
     my $path = $*PROGRAM.parent.parts.tail<basename> eq 'bin'
                     ?? $*PROGRAM.parent.parent.add("resources/decks/rider-waite-smith/$resource-path").absolute
                     !! $*PROGRAM.parent.add("resources/decks/rider-waite-smith/$resource-path").absolute;
@@ -23,10 +25,11 @@ submethod TWEAK(:$resource-path, :$name, :$id) {
     $!image = GTK::Simple::Image.new: :$path;
     $!image.hide;
 
-    $!box = GTK::Simple::VBox.new($!image);
+    $!box = GTK::Simple::VBox.new: $!image;
     $!box.border-width = 16;
 
-    $!id = $id;
+    $!name = $name;
+    $!id = $!id;
 }
 
 method flip-card {

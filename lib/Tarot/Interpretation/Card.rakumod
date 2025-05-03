@@ -1,25 +1,34 @@
 use v6.d;
 
+use Tarot::Interpretation;
+use DB::SQLite;
+
 unit class Tarot::Interpretation::Card;
     also does Tarot::Interpretation;
 
-has $.card-id;
-has $.author;
+has Int $.card-id;
+has Str $.author;
 has @.keywords;
-has $.interpretation;
+has Str $.interpretation;
 
-has $.query =
+my $query-template =
     q:to/END/;
     SELECT
         author,
         keywords,
         interpretation
     FROM
-        interpretations
+        card_interpretations
     WHERE
-        card_id = $card-id
+        card_id = ?
     END
 
-method load(DB::SQLite $db) {
-    ($!author, @!keywords, $!interpretation) = $db.query($!query, :$!card-id)
+
+# This is a class method
+method new(DB::SQLite :$db, Int :$card-id) {
+    my ($author, $keywords, $interpretation) = DB.query($query-template, $card-id).array;
+    self.bless: :$card-id
+                :$author,
+                :$interpretation,
+                :keywords($keywords.split(","));
 }

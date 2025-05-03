@@ -21,9 +21,9 @@
         "Tarot::Party::Panel": "lib/Tarot/Party/Panel.rakumod",
         "Tarot::Party::Panel::CardDetails": "lib/Tarot/Party/Panel/CardDetails.rakumod",
         "Tarot::Interpretation::Card": "lib/Tarot/Interpretation/Card.rakumod",
-        "Text::Interpretation::Spread": "lib/Text/Interpretation/Spread.rakumod",
         "Tarot::Interpretation::Spread": "lib/Tarot/Interpretation/Spread.rakumod",
-        "Tarot::Interpretation": "lib/Tarot/Interpretation.rakumod"
+        "Tarot::Interpretation": "lib/Tarot/Interpretation.rakumod",
+        "Tarot::Party::DB": "lib/Tarot/Party/DB.rakumod"
     },
     "license": "Artistic-2.0",
     "source-url": ""
