@@ -8,7 +8,6 @@ unit role Tarot::Deck;
 
 has $.name is built;
 has $.deck-id is built;
-has DrawStrategy $.strategy is rw = RollOnce;
 
 has @.deck;
 

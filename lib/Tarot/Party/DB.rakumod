@@ -1,12 +1,12 @@
 use v6.d;
 
 use DB::SQLite;
+use Resource::Wrangler;
 
 unit module Tarot::Party::DB;
 
-# TODO: Fix to work with resources\
-
-CHECK my $db-handle = DB::SQLite.new: :filename("{ ~$*CWD }/resources/cards.db");
+my $filename = load-resource-to-path("cards.db");
+my $db-handle = DB::SQLite.new: :$filename;
 
 sub term:<DB> is export { $db-handle }
 

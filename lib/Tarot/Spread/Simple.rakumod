@@ -5,7 +5,5 @@ use Tarot::Spread;
 unit class Tarot::Spread::Simple;
     also does Tarot::Spread;
 
-submethod TWEAK {
-    @!order = [ 3 ];
-    @!placements = [ "Internal", "Theme", "External" ]
-}
+method order      { [ 2, 1, 3 ] }
+method placements { [ "Internal", "Theme", "External" ] }

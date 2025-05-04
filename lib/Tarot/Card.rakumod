@@ -1,5 +1,7 @@
 use v6.d;
 
+use Resource::Wrangler;
+
 use GTK::Simple::Image;
 use GTK::Simple::VBox;
 
@@ -16,10 +18,9 @@ has GTK::Simple::Image $!image is built;
 has GTK::Simple::VBox $!box is built;
 multi method WIDGET() { return $!box.WIDGET; }
 
-submethod TWEAK(:$resource-path!, :$name, :$id) {
-    my $path = $*PROGRAM.parent.parts.tail<basename> eq 'bin'
-                    ?? $*PROGRAM.parent.parent.add("resources/decks/rider-waite-smith/$resource-path").absolute
-                    !! $*PROGRAM.parent.add("resources/decks/rider-waite-smith/$resource-path").absolute;
+submethod TWEAK(:$resource-path, :$name, :$id) {
+    dd :$name, :$id, :$resource-path;
+    my $path = load-resource-to-path("decks/rider-waite-smith/$resource-path");
     die "TRAGIC ERROR! No card found at '$path'" if not $path.IO.e;
 
     $!image = GTK::Simple::Image.new: :$path;
