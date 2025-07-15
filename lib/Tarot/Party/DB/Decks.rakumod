@@ -5,12 +5,13 @@ use OO::Monitors;
 use Resource::Wrangler;
 
 use Tarot::Party::DB;
+use Tarot::Party::DB::Base;
 
 unit monitor Tarot::Party::DB::Decks;
     also does Tarot::Party::DB::Base;
 
 method !load-db {
-    DB::SQLite.new: filename => load-resource-to-path("decks.db")
+    DB::SQLite.new: filename => ~ Wrangler.load-resource-to-path("decks.db")
 }
 
 method get-deck-id(Str $deck-name) {

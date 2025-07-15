@@ -11,7 +11,7 @@ unit monitor Tarot::Party::DB::Cards;
     also does Tarot::Party::DB::Base;
 
 method !load-db(--> DB::SQLite) {
-    DB::SQLite.new: filename => W.load-resource-to-path("cards.db")
+    DB::SQLite.new: filename => ~ Wrangler.load-resource-to-path("cards.db")
 }
 
 multi method get-card-id(Int $position where * < 22, Int $deck-id, :$major!) {

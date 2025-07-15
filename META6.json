@@ -1,7 +1,7 @@
 {
     "name": "Tarot::Party",
     "description": "blah blah blah",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "authors": [
         "John Longwalker"
     ],
@@ -14,22 +14,25 @@
     "provides": {
         "Tarot::Card": "lib/Tarot/Card.rakumod",
         "Tarot::Deck": "lib/Tarot/Deck.rakumod",
-        "Tarot::Deck::RWS": "lib/Tarot/Deck/RWS.rakumod",
         "Tarot::Deck::Misc": "lib/Tarot/Deck/Misc.rakumod",
-        "Tarot::Party": "lib/Tarot/Party.rakumod",
-        "Tarot::Reading": "lib/Tarot/Reading.rakumod",
-        "Tarot::Spread": "lib/Tarot/Spread.rakumod",
-        "Tarot::Spread::Simple": "lib/Tarot/Spread/Simple.rakumod",
-        "Tarot::Party::Panel": "lib/Tarot/Party/Panel.rakumod",
-        "Tarot::Party::Panel::CardDetails": "lib/Tarot/Party/Panel/CardDetails.rakumod",
+        "Tarot::Deck::RWS": "lib/Tarot/Deck/RWS.rakumod",
+        "Tarot::Interpretation": "lib/Tarot/Interpretation.rakumod",
         "Tarot::Interpretation::Card": "lib/Tarot/Interpretation/Card.rakumod",
         "Tarot::Interpretation::Spread": "lib/Tarot/Interpretation/Spread.rakumod",
-        "Tarot::Interpretation": "lib/Tarot/Interpretation.rakumod",
+        "Tarot::Party": "lib/Tarot/Party.rakumod",
         "Tarot::Party::DB": "lib/Tarot/Party/DB.rakumod",
+        "Tarot::Party::DB::Base": "lib/Tarot/Party/DB/Base.rakumod",
         "Tarot::Party::DB::Cards": "lib/Tarot/Party/DB/Cards.rakumod",
         "Tarot::Party::DB::Decks": "lib/Tarot/Party/DB/Decks.rakumod",
-        "Tarot::Party::DB::Base": "lib/Tarot/Party/DB/Base.rakumod"
+        "Tarot::Party::Panel": "lib/Tarot/Party/Panel.rakumod",
+        "Tarot::Party::Panel::CardDetails": "lib/Tarot/Party/Panel/CardDetails.rakumod",
+        "Tarot::Reading": "lib/Tarot/Reading.rakumod",
+        "Tarot::Spread": "lib/Tarot/Spread.rakumod",
+        "Tarot::Spread::Simple": "lib/Tarot/Spread/Simple.rakumod"
     },
+    "resources": [
+        "cards.db"
+    ],
     "license": "Artistic-2.0",
     "source-url": ""
 }

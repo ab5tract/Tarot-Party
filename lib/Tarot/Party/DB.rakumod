@@ -5,7 +5,7 @@ use Resource::Wrangler;
 
 module Tarot::Party::DB {}
 
-sub EXPORT(&resources = { %?RESOURCES }) {
+sub EXPORT(:&resources = { %?RESOURCES }) {
     Map.new:
-        'W' => Resource::Wrangler[&resources].new
+        'Wrangler' => Resource::Wrangler[&resources].new
 }

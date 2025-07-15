@@ -19,9 +19,7 @@ ok $db.query('select count(1) from cards where deck_id = 1').value == 78,
 my $card;
 lives-ok {
     my $card-db = Tarot::Party::DB::Cards.new;
-    dd :$card-db;
-    dd cards => $card-db.get-cards(1);
-    is $card-db.get-cards(1), 78, "Our database classes are wrapping things nicely";
+    is +$card-db.get-cards(1), 78, "Our database classes are wrapping things nicely";
 }, "Can load a card interpretation with ease";
 
 done-testing;
