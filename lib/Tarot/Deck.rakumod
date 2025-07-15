@@ -3,6 +3,7 @@ use v6.d;
 use Tarot::Card;
 use Tarot::Deck::Misc;
 use Tarot::Party::DB;
+use Tarot::Party::DB::Decks;
 
 unit role Tarot::Deck;
 
@@ -10,10 +11,12 @@ has $.name is built;
 has $.deck-id is built;
 has $.strategy is built = Static;
 
+has Tarot::Party::DB::Decks $!db is built;
+
 has @.deck;
 
 submethod TWEAK (:$name){
-    $!deck-id = db-get-deck-id($!name)
+    $!deck-id = $!db.get-deck-id($!name)
         // fail "Could not find deck '$!name'";
     @!deck = self.reshuffle;
 }
@@ -45,5 +48,5 @@ method reshuffle() {
 
 method !generate-lookup {
     dd :$!deck-id;
-    |db-get-deck($!deck-id)
+    |$!db.get-deck($!deck-id)
 }

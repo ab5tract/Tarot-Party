@@ -7,13 +7,14 @@ use GTK::Simple::TextView;
 use DB::SQLite;
 
 use Tarot::Party::Panel;
+use Tarot::Interpretation;
 use Tarot::Card;
 
 unit class Tarot::Party::Panel::CardDetails;
     also does Tarot::Party::Panel;
 
-has @.interpretations of Interpretation;
 has Tarot::Card $.card is built;
+has @.interpretations of Tarot::Interpretation;
 
 submethod TWEAK(DB::SQLite :$db, Tarot::Card :$card) {
     self.set-content: self!assemble-panel;

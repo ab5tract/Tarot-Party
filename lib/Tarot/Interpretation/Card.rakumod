@@ -1,7 +1,6 @@
 use v6.d;
 
 use Tarot::Interpretation;
-use DB::SQLite;
 
 unit class Tarot::Interpretation::Card;
     also does Tarot::Interpretation;
@@ -25,8 +24,9 @@ my $query-template =
 
 
 # This is a class method
-method new(DB::SQLite :$db, Int :$card-id) {
-    my ($author, $keywords, $interpretation) = DB.query($query-template, $card-id).array;
+method new(:$db, Int :$card-id) {
+    my ($author, $keywords, $interpretation) =
+        $db.DB.query($query-template, $card-id).array;
     self.bless: :$card-id
                 :$author,
                 :$interpretation,

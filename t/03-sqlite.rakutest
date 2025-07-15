@@ -4,6 +4,7 @@ use Test;
 
 use DB::SQLite;
 
+use Tarot::Party::DB::Cards;
 use Tarot::Interpretation::Card;
 
 ### TODO: Fix the resource handling. Good enough for local usage though.
@@ -15,9 +16,12 @@ lives-ok {
 ok $db.query('select count(1) from cards where deck_id = 1').value == 78,
     "We have the correct number of Rider-Waite-Smith cards";
 
-my $card-interpretation;
+my $card;
 lives-ok {
-    $card-interpretation = Tarot::Interpretation::Card.new(:$db, :15card-id);
+    my $card-db = Tarot::Party::DB::Cards.new;
+    dd :$card-db;
+    dd cards => $card-db.get-cards(1);
+    is $card-db.get-cards(1), 78, "Our database classes are wrapping things nicely";
 }, "Can load a card interpretation with ease";
 
 done-testing;

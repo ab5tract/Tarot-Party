@@ -16,5 +16,14 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library name="OO::Monitors" type="raku">
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="raku://1166100770:OO::Monitors!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -7,7 +7,8 @@
     ],
     "depends": [
         "GTK::Simple",
-        "Resource::Wrangler:ver<1.2.0>"
+        "Resource::Wrangler:ver<1.2.0>",
+        "OO::Monitors"
     ],
     "build-depends": [],
     "provides": {
@@ -24,7 +25,10 @@
         "Tarot::Interpretation::Card": "lib/Tarot/Interpretation/Card.rakumod",
         "Tarot::Interpretation::Spread": "lib/Tarot/Interpretation/Spread.rakumod",
         "Tarot::Interpretation": "lib/Tarot/Interpretation.rakumod",
-        "Tarot::Party::DB": "lib/Tarot/Party/DB.rakumod"
+        "Tarot::Party::DB": "lib/Tarot/Party/DB.rakumod",
+        "Tarot::Party::DB::Cards": "lib/Tarot/Party/DB/Cards.rakumod",
+        "Tarot::Party::DB::Decks": "lib/Tarot/Party/DB/Decks.rakumod",
+        "Tarot::Party::DB::Base": "lib/Tarot/Party/DB/Base.rakumod"
     },
     "license": "Artistic-2.0",
     "source-url": ""

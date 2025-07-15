@@ -1,2 +1,4 @@
 .precomp/
 /Tarot-Party-*
+*.iml
+.idea/
