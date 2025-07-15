@@ -1,4 +1,4 @@
-use v6.d;
+use v6.*;
 
 use GTK::Simple::Button;
 use GTK::Simple::Entry;
@@ -10,6 +10,7 @@ use Tarot::Party::Panel;
 use Tarot::Card;
 
 unit class Tarot::Party::Panel::CardDetails;
+    also does Tarot::Party::Panel;
 
 has @.interpretations of Interpretation;
 has Tarot::Card $.card is built;

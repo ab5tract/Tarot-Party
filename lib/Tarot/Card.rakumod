@@ -20,7 +20,7 @@ multi method WIDGET() { return $!box.WIDGET; }
 
 submethod TWEAK(:$resource-path, :$name, :$id) {
     dd :$name, :$id, :$resource-path;
-    my $path = load-resource-to-path("decks/rider-waite-smith/$resource-path");
+    my $path = try load-resource-to-path("decks/rider-waite-smith/$resource-path");
     die "TRAGIC ERROR! No card found at '$path'" if not $path.IO.e;
 
     $!image = GTK::Simple::Image.new: :$path;

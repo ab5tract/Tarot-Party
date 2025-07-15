@@ -1,16 +1,17 @@
 use v6.d;
 
 use DB::SQLite;
+use OO::Monitors;
 use Resource::Wrangler;
 
-unit module Tarot::Party::DB;
+unit monitor Tarot::Party::DB;
 
-my $filename = load-resource-to-path("cards.db");
-my $db-handle = DB::SQLite.new: :$filename;
+has $!filename  is built = load-resource-to-path("cards.db");
+has $!db-handle is built = DB::SQLite.new: :$filename;
 
-sub term:<DB> is export { $db-handle }
+method DB { $!db-handle }
 
-multi sub db-get-id(Int $position where * < 22, Int $deck-id, :$major!) is export {
+multi method get-card-id(Int $position where * < 22, Int $deck-id, :$major!) is export {
     state $get-id-query //= q:to/END-QUERY/;
         SELECT  rowid
         FROM    cards
@@ -23,7 +24,7 @@ multi sub db-get-id(Int $position where * < 22, Int $deck-id, :$major!) is expor
         // fail "Could not find record for major arcana (deck_id=$deck-id|position=$position)";
 }
 
-multi sub db-get-id(Int $position where * <= 14, Int $deck-id, Str $suit, :$minor!) is export {
+multi method get-card-id(Int $position where * <= 14, Int $deck-id, Str $suit, :$minor!) is export {
     state $get-id-query //= q:to/END-QUERY/;
         SELECT  rowid
         FROM    cards
@@ -37,7 +38,7 @@ multi sub db-get-id(Int $position where * <= 14, Int $deck-id, Str $suit, :$mino
         // fail "Could not find record for minor arcana (deck_id=$deck-id|position=$position|suit=$suit)";
 }
 
-multi sub db-get-deck-id(Str $deck-name) is export {
+method sub get-deck-id(Str $deck-name) is export {
     state $get-deck-id-query = q:to/END-QUERY/;
         SELECT rowid from decks where name = ?
     END-QUERY
@@ -46,7 +47,7 @@ multi sub db-get-deck-id(Str $deck-name) is export {
         // fail "Could not find deck named $deck-name";
 }
 
-multi sub db-get-deck(Int $deck-id) is export {
+method get-deck-cards(Int $deck-id) is export {
     state $get-deck-query //= q:to/END-QUERY/;
         SELECT rowid,* FROM cards WHERE deck_id = ?
     END-QUERY

@@ -6,7 +6,8 @@
         "John Longwalker"
     ],
     "depends": [
-        "GTK::Simple"
+        "GTK::Simple",
+        "Resource::Wrangler:ver<1.2.0>"
     ],
     "build-depends": [],
     "provides": {
