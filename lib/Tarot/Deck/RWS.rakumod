@@ -1,7 +1,7 @@
 use v6.d;
 
 use Tarot::Deck;
-use Tarot::Party::DB;
+use Tarot::Party::DB::Resources;
 
 unit class Tarot::Deck::RWS;
     also does Tarot::Deck;

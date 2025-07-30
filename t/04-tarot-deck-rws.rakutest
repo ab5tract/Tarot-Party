@@ -2,22 +2,38 @@
 use v6;
 use Test;
 
-use Tarot::Deck::Misc;
+use GTK::Simple::App;
+use Tarot::Party;
+use Tarot::Deck::Enums;
 use Tarot::Deck::RWS;
+use Tarot::Party::DB::Resources;
+
+# This is required to provide a running GTK instance
+# for GTK bits and bobs in classes like Tarot::Card
+my $app = GTK::Simple::App.new;
 
 my $rws;
 
+my $CWD = ~$*CWD;
+
 lives-ok {
-    $rws = Tarot::Deck::RWS.new(:strategy(Static));
+    my &resource-closure = -> { %(
+        "cards.db" => "$CWD/resources/cards.db".IO,
+        "major_arcana_fool.jpeg" => "$CWD/resources/decks/rider-waite-smith/major_arcana_fool.jpeg".IO,
+        "major_arcana_world.jpeg" => "$CWD/resources/decks/rider-waite-smith/major_arcana_world.jpeg".IO
+    ) };
+    my $db-resources = Tarot::Party::DB::Resources.new: :&resource-closure;
+    my $db = Tarot::Party::DB::Decks.new: :$db-resources;
+    $rws = Tarot::Deck::RWS.new(:$db, :strategy(Static));
 }, "Survives instantiation";
 
 my $card;
 lives-ok {
-    $card = $rws.draw-card(:test);
+    $card = $rws.draw-card(:name("The Fool"));
 }, "Survives drawing a card";
 
-ok $card.value eq 'The Fool', "The expected card was drawn (The Fool)";
-ok $rws.draw-card(:test, :index(21)).value eq 'The World', "The expected card was drawn (The World)";
+ok $card.name eq 'The Fool', "The expected card was drawn (The Fool)";
+ok $rws.draw-card(:name("The World")).name eq 'The World', "The expected card was drawn (The World)";
 ok $rws.deck.grep(Nil) == 0, "There are no Nil values in the deck";
 
 done-testing;

@@ -2,7 +2,7 @@
 use v6.d;
 
 #use DB::SQLite;
-use Tarot::Party::DB;
+use Tarot::Party::DB::Resources;
 use Math::Roman;
 
 my $base-path = "{$*CWD}/resources/decks/rider-waite-smith";

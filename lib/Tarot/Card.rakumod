@@ -5,7 +5,7 @@ use Resource::Wrangler;
 use GTK::Simple::Image;
 use GTK::Simple::VBox;
 
-use Tarot::Party::DB;
+use Tarot::Party::DB::Resources;
 
 unit class Tarot::Card;
     also does GTK::Simple::Widget;
@@ -18,11 +18,7 @@ has GTK::Simple::Image $!image is built;
 has GTK::Simple::VBox $!box is built;
 multi method WIDGET() { return $!box.WIDGET; }
 
-submethod TWEAK(:$resource-path, :$name, :$id) {
-    dd :$name, :$id, :$resource-path;
-    my $path = Wrangler.load-resource-to-path("decks/rider-waite-smith/$resource-path");
-    die "TRAGIC ERROR! No card found at '$path'" if not $path.IO.e;
-
+submethod TWEAK(:$path, :$name, :$id) {
     $!image = GTK::Simple::Image.new: :$path;
     $!image.hide;
 
@@ -39,5 +35,3 @@ method flip-card {
         $!image.show;
     }
 }
-
-

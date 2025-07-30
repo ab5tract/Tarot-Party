@@ -1,17 +1,17 @@
 use v6.*;
 
 use Resource::Wrangler;
-use OO::Monitors;
+#use OO::Monitors;
 use DB::SQLite;
 
-use Tarot::Party::DB;
+use Tarot::Party::DB::Resources;
 use Tarot::Party::DB::Base;
 
-unit monitor Tarot::Party::DB::Cards;
+unit class Tarot::Party::DB::Cards;
     also does Tarot::Party::DB::Base;
 
-method !load-db(--> DB::SQLite) {
-    DB::SQLite.new: filename => ~ Wrangler.load-resource-to-path("cards.db")
+method new(*%building) {
+    self.bless: |%building, :db-name<cards.db>;
 }
 
 multi method get-card-id(Int $position where * < 22, Int $deck-id, :$major!) {
