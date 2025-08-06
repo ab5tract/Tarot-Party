@@ -4,6 +4,7 @@ use Resource::Wrangler;
 
 use GTK::Simple::Image;
 use GTK::Simple::VBox;
+use GTK::Simple::EventBox;
 
 use Tarot::Party::DB::Resources;
 
@@ -16,6 +17,8 @@ has Bool $.flipped = False;
 
 has GTK::Simple::Image $!image is built;
 has GTK::Simple::VBox $!box is built;
+has GTK::Simple::EventBox $!event-box;
+
 multi method WIDGET() { return $!box.WIDGET; }
 
 submethod TWEAK(:$path, :$name, :$id) {

@@ -37,6 +37,7 @@ multi method draw-card(--> Tarot::Card) {
     @!deck or self.reshuffle;
 
     my ($id, $name, $resource) = @!deck.shift<rowid name resource_path>;
+    $resource = qq[decks/{$!name.lc}/$resource];
     Tarot::Card.new: :$id, :$name, :path(~$!db.get-resource-path($resource));
 }
 
